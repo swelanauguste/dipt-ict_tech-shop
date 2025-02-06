@@ -3,6 +3,6 @@ $(document).ready(function () {
     $('.del-btn').addClass('btn btn-sm btn-outline-danger');
     $('.link').addClass('text-decoration-none text-dark');
     $('.del-link').addClass('text-decoration-none text-danger');
-    $('#id_quantity').addClass('p-1 rounded-2');
-    $('#id_quantity').attr('onchange', 'this.form.submit()');
+    $('#id_quantity').addClass('p-1 rounded-2 cart-update-from');
+    // $('#id_quantity .cart-update-from').attr('onchange', 'this.form.submit()');
 });

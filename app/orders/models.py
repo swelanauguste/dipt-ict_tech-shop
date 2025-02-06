@@ -1,13 +1,10 @@
-import random
-import string
-
 from django.db import models
 from django.utils.crypto import get_random_string
 from products.models import Product
-
+import uuid
 
 class Order(models.Model):
-    oid = models.CharField(max_length=9, null=True, blank=True, default=get_random_string(8), editable=False, unique=True)
+    oid = models.UUIDField(editable=False, default=uuid.uuid4,)
     name = models.CharField(max_length=50)
     email = models.EmailField()
     location = models.CharField(max_length=250)

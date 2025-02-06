@@ -2,22 +2,37 @@
 
 
 {% block content %}
-<div class="row row-cols-1 row-cols-md-6 g-2">
-    {% for ob in object_list %}
-    <a class="link" href="{{ob.get_absolute_url}}">
-        <div class="col">
-            <div class="card">
-                <img src="{{ob.image}}"
-                    class="card-img-top"
-                    alt="{{ob.image}}">
-                <div class="card-body">
-                    <h5 class="card-title">XCD${{ob.price}}</h5>
-                    <p class="card-text">
-                        {{ob.title|truncatechars:50}}</p>
+<div class="container">
+    <div class="row row-cols-1 row-cols-md-3 g-1">
+        {% for ob in object_list %}
+        <a class="link"
+            href="{{ob.get_absolute_url}}">
+            <div class="col">
+                <div class="card mb-3 rounded-4 shadow-sm"
+                    style="max-width: 540px;">
+                    <div class="row g-0">
+                        <div
+                            class="col-md-4 d-flex justify-content-center align-items-center">
+                            <img src="{{ob.image}}"
+                                style="max-width: 5rem;"
+                                class="img-fluid rounded-start"
+                                alt="{{ob.image}}">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">XCD${{ob.price}}</h5>
+                                <p title=" {{ob.title|title}}" class="card-text small">
+                                    {{ob.title|title|truncatechars:25}}</p>
+                                <p class="card-text"><small
+                                        class="text-body-secondary fw-bold">{{ob.category|upper}}</small>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </a>
-    {% endfor %}
+        </a>
+        {% endfor %}
+    </div>
 </div>
 {% endblock content %}

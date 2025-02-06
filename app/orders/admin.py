@@ -11,6 +11,7 @@ class OrderItemInline(admin.TabularInline):
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
     list_display = [
+        "oid",
         "id",
         "name",
         "email",

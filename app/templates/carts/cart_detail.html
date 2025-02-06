@@ -22,47 +22,50 @@
 
     {% for item in cart %}
     {% with product=item.product %}
-    <div class="row small">
-        <div class="col">
+    <div class="row d-lg-flex align-items-center small">
+        <div class="col-lg-2 col-12 mb-lg-0 mb-2">
             <a href="{{ product.get_absolute_url }}">
-                <img style="max-width: 5rem;"
+                <img style="max-width: 3rem;"
                     src="{% if product.image %} {{ product.image }}
                 {% else %} {% static 'img/no_image.png' %} {% endif %}">
             </a>
         </div>
-        <div class="col">
+        <div class="col-lg-2 col-12 mb-lg-0 mb-2">
             <span>{{ product.title }}</span>
         </div>
-        <div class="col">
-            <form action="{% url 'cart-add' product.id %}"
+        <div class="col-lg-2 col-12 mb-lg-0 mb-2">
+            <form class="d-flex gap-1"
+                action="{% url 'cart-add' product.id %}"
                 method="post">
                 {{ item.update_quantity_form.quantity }}
                 {{ item.update_quantity_form.override }}
-                <!-- <input class="btn"
-                    type="submit"
-                    value="Update"> -->
+                <button class="border-0 bg-body"
+                    type="submit"><span class="text-warning material-symbols-outlined">
+                        update
+                    </span></button>
                 {% csrf_token %}
             </form>
         </div>
-        <div class="col">
+        <div class="col-lg-2 col-12 mb-lg-0 mb-2">
             <span>
                 <form action="{% url 'cart-remove' product.id %}"
                     method="post">
-                    <input class="btn"
-                        type="submit"
-                        value="Remove">
+                   <button class="bg-body border-0" type="submit"><span class="text-danger material-symbols-outlined">
+                    delete
+                    </span></button>
                     {% csrf_token %}
                 </form>
             </span>
         </div>
-        <div class="col">
+        <div class="col-lg-2 col-12 mb-lg-0 mb-2">
             <span>XCD${{ item.price|intcomma }}</span>
         </div>
-        <div class="col text-end">
+        <div class="col-lg-2 col-12 mb-lg-0 mb-2 text-end">
             <span class="fw-bold">XCD${{ item.total_price|intcomma }}</span>
         </div>
 
     </div>
+    <hr>
     {% endwith %}
     {% endfor %}
     {% endblock content %}
