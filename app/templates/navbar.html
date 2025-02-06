@@ -1,0 +1,19 @@
+<nav class="bg-dark py-3">
+    <div class="container">
+        <div class="d-flex justify-content-between">
+            <a class="link-light"
+                href="/">Home</a>
+            {% with total_items=cart|length %}
+            {% if total_items > 0 %}
+            Your cart:
+            <a class="link-light" href="{% url 'cart-detail' %}">
+                {{ total_items }} item{{ total_items|pluralize }},
+                ${{ cart.get_total_price }}
+            </a>
+            {% elif not order %}
+            <span class="text-light">Your cart is empty.</span>
+            {% endif %}
+            {% endwith %}
+        </div>
+    </div>
+</nav>
